@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badratun Napis - Portofolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0f1c2e;
+            --secondary-dark: #16253b;
+            --accent-blue: #1d63b8;
+            --accent-blue-hover: #154e92;
+            --text-light: #ffffff;
+            --text-muted: #94a3b8;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header / Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: var(--primary-dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--text-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: center;
+            padding: 60px 8% 80px 8%;
+            gap: 40px;
+        }
+
+        .hero-content .tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-blue);
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            max-width: 480px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: var(--text-light);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-blue-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-light);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-light);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image-container {
+            width: 320px;
+            height: 380px;
+            border-radius: 160px 160px 20px 20px;
+            overflow: hidden;
+            background-color: #24344d;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .floating-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(15, 28, 46, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+        }
+
+        .floating-badge span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+        }
+
+        /* Tentang Saya Section */
+        .about {
+            background-color: #0b1522;
+            padding: 80px 8%;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .about-title h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .about-title h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+        }
+
+        .stat-item h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Keahlian Section */
+        .skills {
+            padding: 90px 8%;
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-header h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background-color: var(--secondary-dark);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px 24px;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card .number {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .skill-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .skill-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Pengalaman Section */
+        .experience {
+            background-color: #0b1522;
+            padding: 90px 8%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .experience-card {
+            background-color: var(--primary-dark);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .exp-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(29, 99, 184, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+        }
+
+        .badge-type {
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .badge-org {
+            background-color: rgba(29, 99, 184, 0.15);
+            color: #60a5fa;
+        }
+
+        .badge-vol {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+        }
+
+        .exp-body h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .exp-body p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Proyek Section */
+        .projects {
+            padding: 90px 8%;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: var(--secondary-dark);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 240px;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .proj-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .proj-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        .proj-icon-link {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .proj-content h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .proj-content p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Sosial Media / Kontak Section (Pengganti Form Kontak) */
+        .contact {
+            background-color: #0b1522;
+            padding: 90px 8%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .contact-info h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 400px;
+        }
+
+        .social-cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-card {
+            background-color: var(--secondary-dark);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 25px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+
+        .social-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            background-color: rgba(29, 99, 184, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .social-details h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 2px;
+        }
+
+        .social-details p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .social-link-btn {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            background: rgba(29, 99, 184, 0.1);
+            padding: 8px 16px;
+            border-radius: 30px;
+            transition: background 0.3s;
+        }
+
+        .social-card:hover .social-link-btn {
+            background: var(--accent-blue);
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 8%;
+            background-color: var(--primary-dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        footer .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        footer a:hover {
+            color: var(--text-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+
+            .hero,
+            .about,
+            .contact {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-image-wrapper {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .skills-grid,
+            .projects-grid,
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="logo">Badratun Napis</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Beranda</a></li>
+                <li><a href="#tentang">Tentang Saya</a></li>
+                <li><a href="#keahlian">Keahlian</a></li>
+                <li><a href="#pengalaman">Pengalaman</a></li>
+                <li><a href="#proyek">Proyek</a></li>
+                <li><a href="#sosial">Sosial Media</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="tag">Portofolio Mahasiswa</span>
+            <h1>Badratun Napis</h1>
+            <p>Mahasiswa Teknik Informatika yang sedang membangun fondasi di bidang web development.</p>
+            <div class="hero-buttons">
+                <a href="#proyek" class="btn-primary">Lihat portofolio</a>
+                <a href="#sosial" class="btn-outline">Media Sosial</a>
+            </div>
+        </div>
+        <div class="hero-image-wrapper">
+            <div class="hero-image-container">
+                <!-- Ganti atribut src dengan path gambar Anda -->
+                <img src="foto-profil.jpg" alt="Badratun Napis">
+            </div>
+            <div class="floating-badge">
+                Mahasiswa <span>Teknik Informatika</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang Saya Section -->
+    <section id="tentang" class="about">
+        <div class="about-title">
+            <h3>Tentang Saya</h3>
+            <h2>Belajar bertumbuh melalui proses.</h2>
+        </div>
+        <div class="about-text">
+            <p>Saya adalah Badratun Napis, mahasiswa Teknik Informatika yang sedang membangun pemahaman dasar di bidang
+                web development. Saat ini saya fokus mempelajari HTML dan CSS, serta mengembangkan kemampuan bertumbuh
+                dan bekerja sama dalam melalui aktivitas organisasi dan kerelawanan.</p>
+            <div class="about-stats">
+                <div class="stat-item">
+                    <h4>3</h4>
+                    <p>Semester Keaktifan</p>
+                </div>
+                <div class="stat-item">
+                    <h4>HTML</h4>
+                    <p>Mulai Memahami Dasar</p>
+                </div>
+                <div class="stat-item">
+                    <h4>CSS</h4>
+                    <p>Mulai Memahami Dasar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keahlian Section -->
+    <section id="keahlian" class="skills">
+        <div class="section-header">
+            <h3>Keahlian</h3>
+            <h2>Fondasi yang sedang saya kembangkan.</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <span class="number">01</span>
+                <h4>HTML</h4>
+                <p>Memahami struktur dasar halaman web dan penggunaan elemen HTML untuk menyusun konten dengan struktur
+                    yang benar.</p>
+            </div>
+            <div class="skill-card">
+                <span class="number">02</span>
+                <h4>CSS</h4>
+                <p>Mulai mempelajari penataan tampilan, struktur grid, flexbox, dan dasar tata letak agar web terlihat
+                    rapi dan menarik.</p>
+            </div>
+            <div class="skill-card">
+                <span class="number">03</span>
+                <h4>Kerja Sama Tim</h4>
+                <p>Mampu bekerja sama dalam tim dengan menghargai setiap masukan dan aktif berkontribusi dalam sebuah
+                    kegiatan.</p>
+            </div>
+            <div class="skill-card">
+                <span class="number">04</span>
+                <h4>Komunikasi</h4>
+                <p>Berusaha menyampaikan ide dan informasi dengan jelas, sekaligus terbuka untuk menerima masukan baru.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pengalaman Section -->
+    <section id="pengalaman" class="experience">
+        <div class="section-header">
+            <h3>Pengalaman</h3>
+            <h2>Belajar dari organisasi dan kerelawanan.</h2>
+        </div>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div class="exp-icon">🎓</div>
+                    <span class="badge-type badge-org">Organisasi</span>
+                </div>
+                <div class="exp-body">
+                    <h4>MySkill Campus Ambassador</h4>
+                    <p>Mengikuti MySkill Campus Ambassador yang memperluas wawasan dan berperan aktif serta mulai
+                        belajar bersama komunitas.</p>
+                </div>
+            </div>
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div class="exp-icon">🤝</div>
+                    <span class="badge-type badge-vol">Relawan</span>
+                </div>
+                <div class="exp-body">
+                    <h4>Relawan Gesit</h4>
+                    <p>Bagian dari relawan Gesit yang disponsori oleh KITA BISA dan SALAM SETARA, berfokus pada kegiatan
+                        sosial dan pengembangan diri melalui pengalaman relawan.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyek Section -->
+    <section id="proyek" class="projects">
+        <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <div>
+                <h3>Proyek dan Pembelajaran</h3>
+                <h2>Ruang untuk karya yang akan datang.</h2>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.85rem; max-width: 250px; text-align: right;">Bagian ini
+                diisi oleh proyek latihan dan studi kasus untuk persiapan organisasi.</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="proj-top">
+                    <span class="proj-category">Placeholder</span>
+                    <a href="#" class="proj-icon-link">↗</a>
+                </div>
+                <div class="proj-content">
+                    <h4>Proyek Web Pertama</h4>
+                    <p>Memahami dasar-dasar struktur penulisan HTML dan CSS yang sudah mulai saya pelajari di bagian
+                        ini.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="proj-top">
+                    <span class="proj-category">Pembelajaran</span>
+                    <a href="#" class="proj-icon-link">↗</a>
+                </div>
+                <div class="proj-content">
+                    <h4>Catatan Belajar</h4>
+                    <p>Kumpulan catatan kecil untuk mencatat sintaksis, latihan kode, serta pemahaman materi yang baru
+                        saya pelajari.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="proj-top">
+                    <span class="proj-category">Rencana / Data</span>
+                    <a href="#" class="proj-icon-link">↗</a>
+                </div>
+                <div class="proj-content">
+                    <h4>Proyek Mendatang</h4>
+                    <p>Persiapan proyek latihan di masa depan ketika hal ini sudah siap dituangkan ke dalam portofolio.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sosial Media Section (Pengganti Form Kontak) -->
+    <section id="sosial" class="contact">
+        <div class="contact-info">
+            <h3>Sosial Media</h3>
+            <h2>Mari terhubung.</h2>
+            <p>Temukan profil dan aktivitas saya melalui platform profesional serta media sosial di samping.</p>
+        </div>
+        <div class="social-cards-container">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/bd_nafisss?igsh=MTE5OGF3YWhsYXI3MA==" target="_blank"
+                class="social-card">
+                <div class="social-left">
+                    <div class="social-icon">IG</div>
+                    <div class="social-details">
+                        <h4>Instagram</h4>
+                        <p>@bd_nafisss</p>
+                    </div>
+                </div>
+                <span class="social-link-btn">Kunjungi ↗</span>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/badratunnapis10-blip" target="_blank" class="social-card">
+                <div class="social-left">
+                    <div class="social-icon">GH</div>
+                    <div class="social-details">
+                        <h4>GitHub</h4>
+                        <p>github.com/badratunnapis10-blip</p>
+                    </div>
+                </div>
+                <span class="social-link-btn">Kunjungi ↗</span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/badratunnapis" target="_blank" class="social-card">
+                <div class="social-left">
+                    <div class="social-icon">IN</div>
+                    <div class="social-details">
+                        <h4>LinkedIn</h4>
+                        <p>linkedin.com/in/badratunnapis</p>
+                    </div>
+                </div>
+                <span class="social-link-btn">Kunjungi ↗</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div>Badratun Napis</div>
+        <div class="footer-links">
+            <a href="#sosial">Sosial Media</a>
+            <a href="#proyek">Portofolio</a>
+        </div>
+        <div>2026 - Portofolio Mahasiswa</div>
+    </footer>
+
+</body>
+
+</html>
